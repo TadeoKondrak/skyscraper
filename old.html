@@ -1,0 +1,150 @@
+
+
+<!Doctype HTML>
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .problem {text-align:center}
+      .enclose {position:fixed;bottom:5px;width:50%;}
+      .problem2 {text-align:center}
+      .enclose2 {position:fixed;top:5px;width:50%;}
+    </style>
+    <script>
+      if(localStorage.save) {
+        var p = JSON.parse(atob(localStorage.save));
+        setTimeout(function() {
+          for (var i = 0; i < p.floors; i++) {
+           $('#floors').append('|=&nbsp;:::::::::::::&nbsp;=|<br />');
+          }
+        }, 1000);
+      }
+      else {
+        var p = {
+          money: 1000,
+          floors: 0,
+          floorcost: 1000,
+          income: 0
+        }
+      }
+      gameLoop();
+      function addFloor() {
+        $('#floors').append('|=&nbsp;:::::::::::::&nbsp;=|<br />');
+      }
+      function floorUp() {
+          if (p.money >= p.floorcost) {
+              p.floors++;
+              p.money -= p.floorcost;
+              p.floorcost = p.floorcost * 1.1;
+              p.income = p.floors * 15 * 1.25;
+              updateView();
+              addFloor();
+          }
+      }
+      function gameLoop(){
+        p.money+=p.income;
+        updateView();
+        saveGame();
+      }
+      function updateView() {
+        $('#floorCount').html(p.floors);
+        $('#floorCost').html(Math.floor(p.floorcost));
+        $('#money').html(Math.floor(p.money));
+        $('#income').html(Math.floor(p.income));
+      }
+      function saveGame() {
+        localStorage.save = btoa(JSON.stringify(p));
+      }
+      function exportSave() {
+        prompt('This is your save. Keep it.', btoa(JSON.stringify(p)))
+      }
+      function importSave() {
+        p = JSON.parse(atob(prompt('Enter your save here. Your previous save will not be saved.')));
+        gameLoop();
+        setTimeout(function() {
+          for (var i = 0; i < p.floors; i++) {
+           $('#floors').append('|=&nbsp;:::::::::::::&nbsp;=|<br />');
+          }
+        }, 1000);
+      }
+      function wipeSave() {
+        if(confirm('Are you sure you would like to delete EVERYTHING?')) {
+          p = {
+            money: 1000,
+            floors: 0,
+            floorcost: 1000,
+            income: 0
+          }
+          localStorage.save = "";
+          alert('Deleted.')
+          location.reload()
+        }
+        else {
+          alert('Cancelled.')
+        }
+      }
+      setInterval(gameLoop, 1000);
+      $(document).ready(function() {
+        $(document).keypress(function(event){
+          if (event.keyCode == 10 || event.keyCode == 13) 
+              event.preventDefault();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div style="width: 100%;">
+      <div style="width: 50%; float: left;">
+        <div style="text-align: center;">
+          <div class="enclose2 problem2">
+            <h1>Skyscraper Classic</h1>
+            <button onclick="floorUp()">Add floor [$<span id="floorCost">1000</span>]</button>
+            <p>Your tower is <span id="floorCount">0</span> floors tall!</p>
+            <p>Your income is $<span id="income">0</span>.</p>
+            <p>You have $<span id="money">1000</span>.</p>
+            <button onclick="gameLoop()">Magic money button</button>
+          </div>
+          <div class="enclose problem">
+            <button onclick="exportSave()">Export save</button><button onclick="importSave()">Import save</button><button onclick="wipeSave()">Wipe save</button>&nbsp;&nbsp;<a href="index.html"><button>Back to normal version</button></a>
+          </div>
+        </div>
+      </div>
+      <div style="width: 50%; float: right;">
+        <p style="text-align: center; font-family: monospace;">
+          |<br />
+          |<br />
+          |<br />
+          _/^\_<br />
+          //^^^\\<br />
+          //^^^^^\\<br />
+          ||.:::.||<br />
+          //.:::::.\\<br />
+          ||:::::::||<br />
+          __||_&nbsp;:::&nbsp;_||__<br />
+          |.::|.:::.|::.|<br />
+          _|:::|:::::|:::|_<br />
+          |"""""""""""""""""|<br />
+          |=&nbsp;.:::::::::::.&nbsp;=|<br />
+          <span id="floors" style="color: blue;">
+          </span>
+          _|_&nbsp;:::::::::::::&nbsp;_|_<br />
+          |:::|:::::::::::::|:::|<br />
+          _|___|_:::::::::::_|___|_<br />
+          |:::::::|:::::::::|:::::::|<br />
+          _|_::::::|:::::::::|::::::_|_<br />
+          |:::|:::::|:::::::::|:::::|:::|<br />
+          |:::|=:=:=|=:=:=:=:=|=:=:=|:::|<br />
+          &nbsp;|=:=|II:II|:II:I:II:|II:II|=:=|,<br />
+          ,%8|III|----'/.""""""".\`----|III|8%8,<br />
+          '%&86"""""&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\&nbsp;&nbsp;&nbsp;&nbsp;"""""%&6&%<br />
+          --------------'/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`--------------<br />
+          &nbsp;--------------'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`---------------<br />
+          =&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
