@@ -15,6 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Skyscraper</title>
     <script src="main.js"></script>
+    <script>
+        $('img').fadeTo(100,1).on("mousedown", function(){$(this).stop().fadeTo(100,.3);}).on("mouseup", function(){$(this).stop().fadeTo(100,1);});
+    </script>
 </head>
 
 <body>
@@ -30,7 +33,6 @@
                 <p>Your income is $<span id="income">0</span>.</p>
                 <p>You have $<span id="money">1000</span>.</p>
                 <br />
-                <button class="btn btn-lg btn-primary" onclick="gameLoop()">Money</button>
                 <img src="icon.png" onclick="gameLoop()"/>
                 <br />
                 <br />
