@@ -1,12 +1,13 @@
 // Skyscraper game
 // By Tadeo Kondrak
 // LICENSE: http://tadeo.mit-license.org
+"use strict";
 
 if (localStorage.save) {
     var p = JSON.parse(atob(localStorage.save));
     setTimeout(function () {
         for (var i = 0; i < p.floors; i++) {
-            $('#floors').append('|=&nbsp;:::::::::::::&nbsp;=|<br />');
+            addFloor();
         }
     }, 1000);
 } else {
@@ -28,7 +29,7 @@ function floorUp() {
         p.floors++;
         p.money -= p.floorcost;
         p.floorcost = p.floorcost * 1.1;
-        p.income = p.floors * 15 * 1.25;
+        p.income = p.floors * 18.75;
         updateView();
         addFloor();
     }
@@ -44,7 +45,7 @@ if (window.location.hash.slice(0, 14) == '#!/importsave/') {
     gameLoop();
     setTimeout(function () {
         for (var i = 0; i < p.floors; i++) {
-            $('#floors').append('|=&nbsp;:::::::::::::&nbsp;=|<br />');
+            addFloor();
         }
     }, 1000);
     location.hash = '';
@@ -56,7 +57,6 @@ function updateView() {
     $('#floorCost').html(Math.floor(p.floorcost));
     $('#money').html(Math.floor(p.money));
     $('#income').html(Math.floor(p.income));
-
 }
 
 function saveGame() {
@@ -72,19 +72,14 @@ function importSave() {
     gameLoop();
     setTimeout(function () {
         for (var i = 0; i < p.floors; i++) {
-            $('#floors').append('|=&nbsp;:::::::::::::&nbsp;=|<br />');
+            addFloor();
         }
     }, 1000);
 }
 
 function wipeSave() {
     if (confirm('Are you sure you would like to delete EVERYTHING?')) {
-        p = {
-            money: 1000,
-            floors: 0,
-            floorcost: 1000,
-            income: 0
-        }
+        clearInterval(gameLoop);
         localStorage.save = "";
         alert('Deleted.');
         location.reload();
@@ -92,7 +87,9 @@ function wipeSave() {
         alert('Cancelled.')
     }
 }
-setInterval(gameLoop, 1000);
+
+var gameLoop=setInterval(gameLoop, 1000);
+
 $(document).ready(function () {
     $(document).keypress(function (event) {
         if (event.keyCode == 10 || event.keyCode == 13) event.preventDefault();
