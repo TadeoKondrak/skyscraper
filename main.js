@@ -1,6 +1,7 @@
 // Skyscraper game
 // By Tadeo Kondrak
 // LICENSE: http://tadeo.mit-license.org
+"use strict";
 
 if (localStorage.save) {
     var p = JSON.parse(atob(localStorage.save));
@@ -78,7 +79,7 @@ function importSave() {
 
 function wipeSave() {
     if (confirm('Are you sure you would like to delete EVERYTHING?')) {
-        clearInterval(gameLoop);
+        clearInterval(gameLoopInterval);
         localStorage.save = "";
         alert('Deleted.');
         location.reload();
@@ -87,7 +88,7 @@ function wipeSave() {
     }
 }
 
-var gameLoop=setInterval(gameLoop, 1000);
+var gameLoopInterval=setInterval(gameLoop, 1000);
 
 $(document).ready(function () {
     $(document).keypress(function (event) {
