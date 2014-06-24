@@ -1,7 +1,6 @@
 // Skyscraper game
 // By Tadeo Kondrak
 // LICENSE: http://tadeo.mit-license.org
-"use strict";
 
 if (localStorage.save) {
     var p = JSON.parse(atob(localStorage.save));
