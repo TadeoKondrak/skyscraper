@@ -39,6 +39,7 @@ function gameLoop() {
     p.money += p.income;
     updateView();
     saveGame();
+    $('img').stop().fadeTo(100, .3);setTimeout(function(){$('img').stop().fadeTo(100, 1);},130)
 }
 if (window.location.hash.slice(0, 14) == '#!/importsave/') {
     p = JSON.parse(atob(window.location.hash.substr(14)));
