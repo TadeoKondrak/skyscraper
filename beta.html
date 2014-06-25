@@ -14,6 +14,11 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Skyscraper</title>
+    <style>
+        .b {
+          text-weight: bold;    
+        }
+    </style>
     <script src="main.js"></script>
     <script>
         $(function() {
@@ -39,10 +44,10 @@
                 
                 <div class="jumbotron">
                 <div class="row">
-                     <div class="col-md-3">Your tower is <span id="floorCount">0</span> floors tall!</div>
-                     <div class="col-md-3">Your income is $<span id="income">0</span>.</div>
-                     <div class="col-md-3">You have $<span id="money">1000</span>.</div>
-                     <div class="col-md-3">A floor costs $<span id="floorCost">1000</span>.</div>
+                     <div class="col-md-3 b">Your tower is <span id="floorCount">0</span> floors tall!</div>
+                     <div class="col-md-3 b">Your income is $<span id="income">0</span>.</div>
+                     <div class="col-md-3 b">You have $<span id="money">1000</span>.</div>
+                     <div class="col-md-3 b">A floor costs $<span id="floorCost">1000</span>.</div>
                      
                 </div></div>
                 <img src="icon.png" onclick="gameLoop()"/>
