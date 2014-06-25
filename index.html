@@ -1,4 +1,3 @@
-
 <!Doctype HTML>
 <html>
 
@@ -16,7 +15,7 @@
     <title>Skyscraper</title>
     <script src="main.js"></script>
     <script>
-        $(function() {
+        $(function () {
             $('img').fadeTo(100, 1).on("mousedown", function () {
                 $(this).stop().fadeTo(100, .3);
             }).on("mouseup", function () {
@@ -38,16 +37,16 @@
                 <p>Your tower is <span id="floorCount">0</span> floors tall!</p>
                 <p>Your income is $<span id="income">0</span>.</p>
                 <p>You have $<span id="money">1000</span>.</p>
-                <img src="icon.png" onclick="gameLoop()"/>
+                <img src="icon.png" onclick="gameLoop()" />
                 <br />
                 <br />
                 <div class="span6" style="text-align:center">
-                      <button style="align: center;" class="btn btn-xs btn-default" onclick="exportSave()">Export save</button>
-                      <button style="align: center;" class="btn btn-xs btn-default" onclick="importSave()">Import save</button>
-                      <button style="align: center;" class="btn btn-xs btn-default" onclick="wipeSave()">Wipe save</button>
-                    </div>
-                    <br />
-                    <p>Made by <a href="http://tadeokondrak.com">Tadeo Kondrak</a>.</p>
+                    <button style="align: center;" class="btn btn-xs btn-default" onclick="exportSave()">Export save</button>
+                    <button style="align: center;" class="btn btn-xs btn-default" onclick="importSave()">Import save</button>
+                    <button style="align: center;" class="btn btn-xs btn-default" onclick="wipeSave()">Wipe save</button>
+                </div>
+                <br />
+                <p>Made by <a href="http://tadeokondrak.com">Tadeo Kondrak</a>.</p>
                 <br />
                 <br />
                 <br />
@@ -82,10 +81,9 @@
                     <br />--------------'/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`--------------
                     <br />&nbsp;--------------'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`---------------
                     <br />=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=&nbsp;&nbsp;=</p>
-                    <br />
-                    
-                    <br />
-                    <br />
+                <br />
+                <br />
+                <br />
             </div>
         </div>
     </div>
