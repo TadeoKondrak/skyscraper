@@ -14,11 +14,6 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Skyscraper</title>
-    <style>
-        .b {
-          font-weight: bold;
-        }
-    </style>
     <script src="main.js"></script>
     <script>
         $(function() {
@@ -37,18 +32,12 @@
             <div class="col-md-6" style="text-align: center;">
                 <h1>Skyscraper</h1> 
                 <br />
-                <button class="btn btn-sm btn-success" onclick="floorUp()">Add floor</button>
+                <button class="btn btn-sm btn-success" onclick="floorUp()">Add floor [$<span id="floorCost">1000</span>]</button>
                 <br />
                 <br />
-                
-                
-                <div class="row" style="background-color: #eee;padding: 30px;border-radius: 6px;margin-bottom: 15px;">
-                <div class="col-md-3"><h1>Floors</h1><br /><p id="floorCount">0</p></div>
-                     <div class="col-md-3"><p id="income">0</p></div>
-                     <div class="col-md-3"><p id="money">1000</p></div>
-                     <div class="col-md-3">$<p id="floorCost">1000</p></div>
-                     
-                </div>
+                <p>Your tower is <span id="floorCount">0</span> floors tall!</p>
+                <p>Your income is $<span id="income">0</span>.</p>
+                <p>You have $<span id="money">1000</span>.</p>
                 <img src="icon.png" onclick="gameLoop()"/>
                 <br />
                 <br />
