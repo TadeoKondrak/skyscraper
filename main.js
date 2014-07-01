@@ -21,7 +21,7 @@ if (localStorage.save) {
 gameLoop();
 
 function addFloor() {
-    $('#floors').append('|=&nbsp;:::::::::::::&nbsp;=|<br />');
+    $('#floors').append('|=&nbsp;:::::::::::::&nbsp;=|&nbsp;<br />');
 }
 
 function floorUp() {
