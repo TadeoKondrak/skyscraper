@@ -1,7 +1,7 @@
 // Skyscraper game
 // By Tadeo Kondrak
 // LICENSE: http://tadeo.mit-license.org
-"use strict";
+
 
 if (localStorage.save) {
     var p = JSON.parse(atob(localStorage.save));
@@ -16,7 +16,7 @@ if (localStorage.save) {
         floors: 0,
         floorcost: 1000,
         income: 0
-    }
+    };
 }
 gameLoop();
 
@@ -39,11 +39,11 @@ function gameLoop() {
     p.money += p.income;
     updateView();
     saveGame();
-    if ($('img:hover').length == 0) {
-        $('img').stop().fadeTo(100, .3);
+    if ($('img:hover').length === 0) {
+        $('img').stop().fadeTo(100, 0.3);
         setTimeout(function () {
             $('img').stop().fadeTo(100, 1);
-        }, 130)
+        }, 130);
     }
 }
 if (window.location.hash.slice(0, 14) == '#!/importsave/') {
@@ -70,7 +70,7 @@ function saveGame() {
 }
 
 function exportSave() {
-    prompt('This is your save. Keep it.', btoa(JSON.stringify(p)))
+    prompt('This is your save. Keep it.', btoa(JSON.stringify(p)));
 }
 
 function importSave() {
@@ -90,7 +90,7 @@ function wipeSave() {
         alert('Deleted.');
         location.reload();
     } else {
-        alert('Cancelled.')
+        alert('Cancelled.');
     }
 }
 
